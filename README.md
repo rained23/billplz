@@ -1,4 +1,4 @@
-PHP framework agnostic library for working with BillPlz API v3 and beyond... (Supporting Laravel 4.2)
+PHP framework agnostic library for working with BillPlz API v3 and beyond...
 ==============
 
 [![Latest Stable Version](https://poser.pugx.org/jomweb/billplz/v/stable?format=flat)](https://packagist.org/packages/jomweb/billplz)
@@ -47,7 +47,7 @@ use Http\Adapter\Guzzle6\Client as GuzzleHttpClient;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 
 $http = new HttpMethodsClient(
-    new GuzzleHttpClient(),
+    new GuzzleHttpClient(), 
     new GuzzleMessageFactory()
 );
 
@@ -151,7 +151,7 @@ return [
 
 ```php
 $response = $collection->createOpen(
-    'My First API Collection',
+    'My First API Collection', 
     'Maecenas eu placerat ante. Fusce ut neque justo, et aliquet enim. In hac habitasse platea dictumst.',
     Money\Money::MYR(299)
 );
@@ -186,7 +186,7 @@ return [
 ```
 
 
-### Creating Bill Request
+### Creating Bill Request 
 
 Now you can create an instance of Bill:
 
