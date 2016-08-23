@@ -48,6 +48,11 @@ class Client extends BaseClient
     {
         $this->http = $http;
         $this->apiKey = $apiKey;
+
+				if(filter_var(getenv('BILLPLZ_SANDBOX'), FILTER_VALIDATE_BOOLEAN)) {
+					$this->useSandbox();
+				}
+
     }
 
     /**

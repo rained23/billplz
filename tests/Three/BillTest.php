@@ -51,4 +51,21 @@ class BillTest extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(Response::class, $result);
     }
+
+		public function test_enable_sandbox_using_env()
+		{
+			putenv('BILLPLZ_SANDBOX=1');
+			$client = Client::make('api');
+
+			$this->assertSame($client->getApiEndpoint(),'https://billplz-staging.herokuapp.com/api');
+		}
+
+		public function test_disable_sandbox_using_env()
+		{
+			putenv('BILLPLZ_SANDBOX=0');
+			$client = Client::make('api');
+
+			$this->assertSame($client->getApiEndpoint(),'https://www.billplz.com/api');
+		}
+
 }

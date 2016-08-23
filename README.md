@@ -47,7 +47,7 @@ use Http\Adapter\Guzzle6\Client as GuzzleHttpClient;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 
 $http = new HttpMethodsClient(
-    new GuzzleHttpClient(), 
+    new GuzzleHttpClient(),
     new GuzzleMessageFactory()
 );
 
@@ -71,6 +71,12 @@ You can set to use development/sandbox environment by adding the following code:
 
 ```php
 $billplz->useSandbox();
+```
+
+You can also use environment variable by adding the following variable:
+
+```
+BILLPLZ_SANDBOX=TRUE // True,False,1,0
 ```
 
 #### Using different API Version
@@ -151,7 +157,7 @@ return [
 
 ```php
 $response = $collection->createOpen(
-    'My First API Collection', 
+    'My First API Collection',
     'Maecenas eu placerat ante. Fusce ut neque justo, et aliquet enim. In hac habitasse platea dictumst.',
     Money\Money::MYR(299)
 );
@@ -186,7 +192,7 @@ return [
 ```
 
 
-### Creating Bill Request 
+### Creating Bill Request
 
 Now you can create an instance of Bill:
 
