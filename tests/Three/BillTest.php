@@ -21,6 +21,7 @@ class BillTest extends PHPUnit_Framework_TestCase
         $response = Mockery::mock(Response::class);
         $sanitizer = new Sanitizer();
 
+				$collectionId = 'inbmmepb';
         $data = [
             'email' => 'api@billplz.com',
             'mobile' => null,
@@ -39,14 +40,10 @@ class BillTest extends PHPUnit_Framework_TestCase
 
         $bill = new Bill($client, $sanitizer);
 
+				unset($data['collection_id']);
         $result = $bill->create(
-            $data['collection_id'],
-            $data['email'],
-            $data['mobile'],
-            $data['name'],
-            Money::MYR($data['amount']),
-            $data['callback_url'],
-            $data['description']
+            $collectionId,
+            $data
         );
 
         $this->assertInstanceOf(Response::class, $result);

@@ -10,13 +10,7 @@ class Bill extends Request
      * Create a new bill.
      *
      * @param  string  $collectionId
-     * @param  string  $email
-     * @param  string  $mobile
-     * @param  string  $name
-     * @param  \Money\Money|int  $amount
-     * @param  string  $callbackUrl
-     * @param  string  $description
-     * @param  array  $optional
+     * @param  array  $params
      *
      * @throws  \InvalidArgumentException
      *
@@ -24,25 +18,16 @@ class Bill extends Request
      */
     public function create(
         $collectionId,
-        $email,
-        $mobile,
-        $name,
-        $amount,
-        $callbackUrl,
-        $description,
-        array $optional = []
+        array $params = []
     ) {
-        if (empty($email) && empty($mobile)) {
+        if (empty($params['email']) && empty($params['mobile'])) {
             throw new InvalidArgumentException('Either $email or $mobile should be present');
         }
 
-        $body = array_merge(
-            compact('email', 'mobile', 'name', 'amount', 'description'),
-            $optional
-        );
+        $body = $params;
 
         $body['collection_id'] = $collectionId;
-        $body['callback_url'] = $callbackUrl;
+        // $body['callback_url'] = $callbackUrl;
 
         return $this->send('POST', 'bills', [], $body);
     }
